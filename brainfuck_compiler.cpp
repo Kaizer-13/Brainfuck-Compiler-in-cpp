@@ -2,6 +2,7 @@
 #include <getopt.h>
 using namespace std;
 
+//#include "debug.h"
 
 map<int,int> mp;
 vector<char>code;
@@ -19,7 +20,8 @@ void handle(int x, int y)
         if(code[p]=='-') memo[i]--;
         if(code[p]==','){
             unsigned char z;
-            scanf("%c",&z);
+            scanf(" %c",&z);
+            //printf("input: %c\n",z);
             memo[i]+=z;
         }
         if(code[p]=='.') printf("%c",memo[i]);
@@ -59,7 +61,10 @@ int main(int argc, char** argv){
         printf("ERROR: INVALID FILE FORMAT\n");
         return 0;
     }
-    FILE *fp=freopen(name,"r",stdin);
+
+    // printf("%s",name);
+
+    FILE *fp=fopen(name,"r");
     if(fp==NULL){
         printf("ERROR: FILE \"%s\" DOES NOT EXIST\n",name);
         return 0;
@@ -87,9 +92,12 @@ int main(int argc, char** argv){
             }
         }
     }
+
+
+
     fclose(fp);
     if(!success){
-        cout<<"ERROR: SYNTAX FAULT\n";
+        printf("ERROR: SYNTAX FAULT\n");
         return 0;
     }
     handle(0,code.size()-1);
