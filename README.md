@@ -7,4 +7,4 @@ Brainfuck Code execution command:
 Single command for running and execution:
   g++ -std=c++17 brainfuck_compiler.cpp -o bf && ./bf.out -f $FILENAME$
   
-  NOTE: File must have .bf or .b extension
+  *NOTE: File must have .bf or .b extension
